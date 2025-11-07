@@ -37,58 +37,65 @@ void main() {
     }
   }
 
+  List<Map<String, dynamic>> updatedStudents = [];
   print("Grading Details of the Students: ");
 
   students.forEach((student) {
     double s = student['score'];
     switch (s) {
       case >= 80:
-        print(
-            "ID: ${student['ID']}, Name: ${student['name']}, score: ${student['score']}, Grade: A+");
+        student = {...student, 'Grade': 'A+'};
+        updatedStudents.add(student);
+        print(student);
         break;
       case >= 70:
-        print(
-            "ID: ${student['ID']}, Name: ${student['name']}, score: ${student['score']}, Grade: A");
+        student = {...student, 'Grade': 'A'};
+        updatedStudents.add(student);
+        print(student);
         break;
       case >= 60:
-        print(
-            "ID: ${student['ID']}, Name: ${student['name']}, score: ${student['score']}, Grade: A-");
+        student = {...student, 'Grade': 'A-'};
+        updatedStudents.add(student);
+        print(student);
         break;
       case >= 50:
-        print(
-            "ID: ${student['ID']}, Name: ${student['name']}, score: ${student['score']}, Grade: B");
+        student = {...student, 'Grade': 'B'};
+        updatedStudents.add(student);
+        print(student);
         break;
       case >= 40:
-        print(
-            "ID: ${student['ID']}, Name: ${student['name']}, score: ${student['score']}, Grade: C");
+        student = {...student, 'Grade': 'c'};
+        updatedStudents.add(student);
+        print(student);
         break;
       case >= 33:
-        print(
-            "ID: ${student['ID']}, Name: ${student['name']}, score: ${student['score']}, Grade: D");
+        student = {...student, 'Grade': 'D'};
+        updatedStudents.add(student);
+        print(student);
         break;
       default:
-        print(
-            "ID: ${student['ID']}, Name: ${student['name']}, score: ${student['score']}, Grade: F");
+        student = {...student, 'Grade': 'F'};
+        updatedStudents.add(student);
+        print(student);
     }
   });
-  List<Map<String, dynamic>> sortedStudents = [...students];
+
+  List<Map<String, dynamic>> sortedStudents = [...updatedStudents];
   sortedStudents.sort((a, b) => b['score'].compareTo(a['score']));
 
   print("Sorted Student Details by score (Descending):");
   sortedStudents.forEach((student) {
-    print(
-        "ID: ${student['ID']}, Name: ${student['name']}, score: ${student['score']}");
+    print(student);
   });
 
   print("Total number of students: ${students.length}");
 
   print("Highest score student details:");
   Map<String, dynamic> highestScoreStudent = sortedStudents.first;
-  print(
-      "ID: ${highestScoreStudent['ID']}, Name: ${highestScoreStudent['name']}, score: ${highestScoreStudent['score']}");
+  print(highestScoreStudent);
 
   print("Lowest score student details:");
   Map<String, dynamic> lowestScoreStudent = sortedStudents.last;
-  print(
-      "ID: ${lowestScoreStudent['ID']}, Name: ${lowestScoreStudent['name']}, score: ${lowestScoreStudent['score']}");
+  print(lowestScoreStudent);
+  ;
 }
